@@ -1,0 +1,20 @@
+send:
+  build: .
+  command: -c /fluent/fluent.conf
+  volumes:
+    - ./send:/fluent
+    - ./in:/in
+  ports:
+    - "24224:24224"
+    - "9880:9880"
+  links:
+    - recv:recv
+
+recv:
+  build: .
+  command: -c /fluent/fluent.conf
+  volumes:
+    - ./recv:/fluent
+    - ./out:/out
+  #ports:
+  #  - "24224:24224"
