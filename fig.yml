@@ -3,7 +3,7 @@ send:
   command: -c /fluent/fluent.conf
   volumes:
     - ./send:/fluent
-    - ./in:/in
+    - ./in:/log
   ports:
     - "24224:24224"
     - "9880:9880"
@@ -15,6 +15,6 @@ recv:
   command: -c /fluent/fluent.conf
   volumes:
     - ./recv:/fluent
-    - ./out:/out
+    - ./out:/log
   #ports:
   #  - "24224:24224"
